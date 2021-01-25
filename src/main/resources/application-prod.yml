@@ -1,0 +1,4 @@
+java:
+    com:
+        example:
+            baseUrl: https://spring-boot-test-aplication.herokuapp.com/
