@@ -10,4 +10,7 @@ public class DemoApplicationProperties {
     
     @NotNull
     private String baseUrl;
+
+    @NotNull
+    private String basePath;
 }

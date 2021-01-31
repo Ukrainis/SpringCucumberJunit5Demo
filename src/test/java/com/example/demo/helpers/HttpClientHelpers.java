@@ -16,4 +16,9 @@ public class HttpClientHelpers {
         response = given().spec(rSpecification).when().get(url);
         return response;
     }
+
+    public Response restDelete(RequestSpecification rSpecification, String url) {
+        response = given().spec(rSpecification).when().delete(url);
+        return response;
+    }
 }

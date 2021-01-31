@@ -13,25 +13,26 @@ import io.restassured.specification.RequestSpecification;
 
 @Service
 public class RequestsSpecifications {
-	
-	@Autowired
-	DemoApplicationProperties properties;
-	RequestSpecification reqSpecification;
-	RequestSpecBuilder builder;
-	
-	public RequestSpecification getDefaultRequestSpecification() {
-		builder = getRequestSpecBuilderWithFilters();
-		reqSpecification = builder.setBaseUri(properties.getBaseUrl())
-		.setAccept(ContentType.JSON)
-		.log(LogDetail.ALL)
-		.build();
-		return reqSpecification;
-	}
-	
-	private RequestSpecBuilder getRequestSpecBuilderWithFilters() {
-		builder = null;
-		builder = new RequestSpecBuilder();
-		builder.addFilter(new AllureRestAssured());
-		return builder;
-	}
+
+    @Autowired
+    DemoApplicationProperties properties;
+    RequestSpecification reqSpecification;
+    RequestSpecBuilder builder;
+
+    public RequestSpecification getDefaultRequestSpecification() {
+        builder = getRequestSpecBuilderWithFilters();
+        reqSpecification = builder.setBaseUri(properties.getBaseUrl())
+                .setBasePath(properties.getBasePath())
+                .setAccept(ContentType.JSON)
+                .log(LogDetail.ALL)
+                .build();
+        return reqSpecification;
+    }
+
+    private RequestSpecBuilder getRequestSpecBuilderWithFilters() {
+        builder = null;
+        builder = new RequestSpecBuilder();
+        builder.addFilter(new AllureRestAssured());
+        return builder;
+    }
 }
